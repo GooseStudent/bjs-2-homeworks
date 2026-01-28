@@ -42,7 +42,7 @@ function differenceEvenOddWorker(...arr) {
         if (arr[i] % 2 === 0) sumEven += arr[i];
         else sumOdd += arr[i];
     }
-    return sumOdd - sumEven;
+    return sumEven - sumOdd;
 }
 
 function averageEvenElementsWorker(...arr) {
