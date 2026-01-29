@@ -1,68 +1,64 @@
     class PrintEditionItem {
-    	name;
-    	releaseDate;
-    	pagesCount;
-    	state = 100;
-    	type = null;
-
     	constructor(name, releaseDate, pagesCount) {
     		this.name = name;
     		this.releaseDate = releaseDate;
     		this.pagesCount = pagesCount;
+            this._state = 100;
+            this.type = null;
     	}
 
     	set state(value) {
     		if (value < 0) {
-    			this.state = 0;
+    			this._state = 0;
     		} else if (value > 100) {
-    			this.state = 100;
+    			this._state = 100;
     		} else {
-    			this.state = value;
+    			this._state = value;
     		}
     	}
 
     	get state() {
-    		return this.state;
+    		return this._state;
     	}
 
     	fix() {
-    		state = state * 1.5;
+    		this.state = this.state * 1.5;
     	}
     }
 
     class Magazine extends PrintEditionItem {
     	constructor(name, releaseDate, pagesCount) {
     		super(name, releaseDate, pagesCount);
-    		this.type = magazine;
+    		this.type = "magazine";
     	}
     }
 
     class Book extends PrintEditionItem {
     	constructor(author, name, releaseDate, pagesCount) {
     		super(name, releaseDate, pagesCount);
-    		this.type = Bookk;
     		this.author = author;
+            this.type = "book";
     	}
     }
 
     class NovelBook extends Book {
     	constructor(author, name, releaseDate, pagesCount) {
     		super(author, name, releaseDate, pagesCount);
-    		this.type = novel;
+    		this.type = "novel";
     	}
     }
 
     class FantasticBook extends Book {
     	constructor(author, name, releaseDate, pagesCount) {
     		super(author, name, releaseDate, pagesCount);
-    		this.type = fantastic;
+    		this.type = "fantastic";
     	}
     }
 
     class DetectiveBook extends Book {
     	constructor(author, name, releaseDate, pagesCount) {
     		super(author, name, releaseDate, pagesCount);
-    		this.type = detective;
+    		this.type = "detective";
     	}
     }
 
@@ -74,13 +70,13 @@
     	}
 
     	addBook(book) {
-    		if (book.state < 30) {
-    			this.book.push(book);
+    		if (book.state > 30) {
+    			this.books.push(book);
     		}
     	}
 
     	findBookBy(type, value) {
-    		return this.book.find(book => book[type] === value) || null;
+    		return this.books.find(book => book[type] === value) || null;
     	}
 
     	giveBookByName(bookName) {
